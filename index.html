@@ -658,19 +658,34 @@
       .hero-buttons, .quick-proof { margin-top: 22px; }
       .quick-proof { grid-template-columns: 1fr; }
       .hero-samples {
+        display: flex;
         max-width: 100%;
-        gap: 8px;
+        gap: 10px;
         margin-top: 18px;
         order: 1;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .hero-samples picture {
+        flex: 0 0 44%;
+        aspect-ratio: 2 / 3;
+        scroll-snap-align: start;
       }
       .hero-buttons { order: 2; }
       .quick-proof { order: 3; }
       .hero-samples img {
-        aspect-ratio: 4 / 3;
-        object-position: center top;
+        height: 100%;
+        aspect-ratio: 2 / 3;
+        object-fit: contain;
+        object-position: center center;
       }
-      .hero-samples img.hero-sample-page2 { object-position: 22% top; }
-      .hero-samples img.hero-sample-manga { object-position: 78% top; }
+      .scene-images img,
+      .comparison img {
+        object-fit: contain;
+        background: #050508;
+      }
       section { padding: 64px 0; }
       .comparison { grid-template-columns: 1fr; }
       .card-info, .service-card, .review-card, .faq-item { padding: 18px; }
