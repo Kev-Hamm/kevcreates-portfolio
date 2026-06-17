@@ -3,27 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KevCreates — AI Manga & Comic Production</title>
-  <meta name="description" content="AI-powered manga and comic page production with visual QA. Script to page, panel planning, character consistency, and quality-checked delivery.">
+  <title>KevCreates - AI Manga & Comic Pages With QA Proof</title>
+  <meta name="description" content="AI-assisted manga and comic page production for Fiverr: panel planning, curated page art, character consistency review, and visual QA proof.">
+  <meta property="og:title" content="KevCreates - AI Manga & Comic Pages With QA Proof">
+  <meta property="og:description" content="Script-to-page AI manga and comic art with panel planning, curated candidates, and visual QA proof.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kev-hamm.github.io/kevcreates-portfolio/">
+  <meta property="og:image" content="https://kev-hamm.github.io/kevcreates-portfolio/images/comic-page1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KevCreates - AI Manga & Comic Pages With QA Proof">
+  <meta name="twitter:description" content="AI-assisted manga and comic pages for Fiverr buyers, delivered with panel planning and visual QA notes.">
+  <meta name="twitter:image" content="https://kev-hamm.github.io/kevcreates-portfolio/images/comic-page1.png">
+  <link rel="canonical" href="https://kev-hamm.github.io/kevcreates-portfolio/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --surface-2: #1a1a26;
-      --border: #2a2a3a;
-      --text: #e8e8f0;
-      --text-muted: #8888a0;
-      --accent: #6c5ce7;
-      --accent-glow: #7c6cf7;
-      --accent-2: #00cec9;
-      --gradient-1: linear-gradient(135deg, #6c5ce7, #00cec9);
-      --gradient-2: linear-gradient(135deg, #fd79a8, #6c5ce7);
+      --bg: #0b0b0f;
+      --surface: #14141b;
+      --surface-2: #1d1d27;
+      --surface-3: #232331;
+      --border: #303042;
+      --text: #f1f1f5;
+      --text-muted: #aaaabd;
+      --accent: #ff4f8b;
+      --accent-2: #1dd3c9;
+      --accent-3: #ffd166;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      --gradient: linear-gradient(135deg, #ff4f8b, #7c5cff 55%, #1dd3c9);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -33,643 +46,933 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+    img { max-width: 100%; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.08; letter-spacing: 0; }
+    a { color: inherit; }
 
     .container {
-      max-width: 1100px;
+      width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 0 24px;
     }
 
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 64px;
-    }
-
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 0.78rem;
       font-weight: 700;
-      font-size: 1.25rem;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-      margin-left: 28px;
-    }
-
-    nav a:hover { color: var(--text); }
-
-    .nav-links { display: flex; align-items: center; }
 
     .cta-btn {
-      display: inline-block;
-      padding: 10px 24px;
-      background: var(--gradient-1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 20px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: var(--gradient);
       color: #fff;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none;
-      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
     }
 
     .cta-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(108, 92, 231, 0.3);
+      box-shadow: 0 12px 34px rgba(255, 79, 139, 0.24);
     }
 
     .cta-btn-outline {
       background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
+      border-color: var(--border);
+      color: var(--text);
     }
 
-    .cta-btn-outline:hover {
-      background: var(--accent);
-      color: #fff;
+    .cta-btn-outline:hover { border-color: var(--accent-2); box-shadow: none; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 15, 0.88);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
+    nav .container {
+      min-height: 64px;
       display: flex;
       align-items: center;
-      padding-top: 64px;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links .cta-btn { color: #fff; }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      align-items: center;
+      padding: 64px 0 56px;
       position: relative;
+      isolation: isolate;
     }
 
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(108,92,231,0.12) 0%, transparent 70%);
-      pointer-events: none;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(11, 11, 15, 0.92) 0%, rgba(11, 11, 15, 0.72) 42%, rgba(11, 11, 15, 0.14) 100%),
+        url('images/comic-page1.png') center right 18% / min(58vw, 640px) auto no-repeat;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 110px;
+      background: linear-gradient(180deg, transparent, var(--bg));
+      z-index: -1;
     }
 
     .hero-content {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      padding: 6px 16px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--accent-2);
-      margin-bottom: 24px;
-      letter-spacing: 0.5px;
+      max-width: 650px;
+      padding: 28px 0;
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      font-size: clamp(2.45rem, 8vw, 5.2rem);
+      margin: 14px 0 20px;
     }
 
-    .hero h1 .gradient-text {
-      background: var(--gradient-1);
+    .gradient-text {
+      background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      max-width: 610px;
       color: var(--text-muted);
-      margin-bottom: 36px;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: clamp(1rem, 2.4vw, 1.18rem);
     }
 
     .hero-buttons {
       display: flex;
-      gap: 16px;
-      justify-content: center;
+      gap: 14px;
       flex-wrap: wrap;
+      margin-top: 30px;
     }
 
-    /* PORTFOLIO GRID */
-    section { padding: 100px 0; }
+    .quick-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 30px;
+      max-width: 650px;
+    }
+
+    .proof-pill {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(20, 20, 27, 0.74);
+    }
+
+    .proof-pill strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text);
+    }
+
+    .proof-pill span {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    section { padding: 88px 0; }
 
     .section-header {
-      text-align: center;
-      margin-bottom: 56px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
     }
 
     .section-header h2 {
-      font-size: 2rem;
-      margin-bottom: 12px;
+      font-size: clamp(1.85rem, 4vw, 2.7rem);
+      margin-top: 8px;
     }
 
     .section-header p {
-      color: var(--text-muted);
       max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .portfolio-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-
-    .portfolio-card img {
-      width: 100%;
-      height: 360px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .portfolio-card .card-info {
-      padding: 20px;
-    }
-
-    .portfolio-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-    }
-
-    .portfolio-card p {
-      font-size: 0.85rem;
       color: var(--text-muted);
     }
+
+    .featured-scene, .proof-panel, .service-card, .review-card, .faq-item, .portfolio-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .featured-scene {
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .scene-images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      background: #050508;
+    }
+
+    .scene-images picture, .scene-images img { display: block; height: 100%; }
+
+    .scene-images img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .card-info {
+      padding: 22px;
+    }
+
+    .card-info h3 {
+      font-size: 1.22rem;
+      margin-bottom: 8px;
+    }
+
+    .card-info p { color: var(--text-muted); font-size: 0.94rem; }
 
     .card-tags {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 15px;
     }
 
     .card-tag {
-      padding: 4px 10px;
-      background: var(--surface-2);
+      border: 1px solid rgba(29, 211, 201, 0.24);
       border-radius: 6px;
-      font-size: 0.75rem;
+      background: rgba(29, 211, 201, 0.08);
       color: var(--accent-2);
+      padding: 5px 9px;
+      font-size: 0.75rem;
+      font-weight: 700;
     }
 
-    /* FEATURED — wide card for the 3-page scene */
-    .featured-scene {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 24px;
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
     }
 
-    .featured-scene .scene-images {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .featured-scene .scene-images img {
-      flex: 0 0 33.333%;
-      min-width: 280px;
-      height: 480px;
+    .portfolio-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 2 / 3;
       object-fit: cover;
-      scroll-snap-align: start;
+      cursor: zoom-in;
+      background: #050508;
     }
 
-    .featured-scene .card-info {
-      padding: 24px;
+    .portfolio-card.square img { aspect-ratio: 1 / 1; }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
     }
 
-    .featured-scene h3 { font-size: 1.2rem; margin-bottom: 8px; }
-    .featured-scene p { color: var(--text-muted); font-size: 0.9rem; }
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+    }
 
-    /* PROCESS */
+    .comparison figure {
+      position: relative;
+      background: #050508;
+    }
+
+    .comparison img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .comparison figcaption {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 6px 9px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.68);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .qa-list {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      margin-top: 18px;
+    }
+
+    .qa-list li {
+      display: flex;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .qa-list li::before {
+      content: 'PASS';
+      align-self: start;
+      min-width: 46px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: rgba(29, 211, 201, 0.12);
+      color: var(--accent-2);
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
     .process-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .process-step {
+      border-top: 3px solid var(--accent-2);
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 24px;
-      text-align: center;
-      transition: border-color 0.3s;
+      border-radius: 8px;
+      padding: 24px 20px;
+      min-height: 210px;
     }
-
-    .process-step:hover { border-color: var(--accent); }
 
     .step-number {
-      display: inline-flex;
-      width: 48px;
-      height: 48px;
-      align-items: center;
-      justify-content: center;
-      background: var(--gradient-1);
-      border-radius: 12px;
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: var(--surface-3);
+      color: var(--accent-3);
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 16px;
+      font-weight: 800;
     }
 
-    .process-step h3 {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-    }
+    .process-step h3 { font-size: 1rem; margin-bottom: 8px; }
+    .process-step p { color: var(--text-muted); font-size: 0.88rem; }
 
-    .process-step p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* SERVICES */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
     }
 
     .service-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 36px 28px;
+      padding: 28px;
       position: relative;
-      overflow: hidden;
     }
 
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-1);
+    .service-card.featured {
+      border-color: rgba(255, 79, 139, 0.5);
+      box-shadow: var(--shadow);
     }
 
-    .service-card .price {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .service-card .tier-label {
-      font-size: 0.8rem;
+    .tier-label {
       color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
     }
 
-    .service-card h3 {
-      font-size: 1.15rem;
-      margin: 16px 0 12px;
+    .price {
+      margin: 8px 0 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--text);
     }
+
+    .service-card h3 { font-size: 1.22rem; margin-bottom: 12px; }
 
     .service-card ul {
       list-style: none;
-      margin: 16px 0 24px;
+      display: grid;
+      gap: 8px;
+      margin: 18px 0 24px;
     }
 
-    .service-card ul li {
-      padding: 6px 0;
-      font-size: 0.9rem;
+    .service-card li {
       color: var(--text-muted);
       display: flex;
-      align-items: baseline;
-      gap: 8px;
+      gap: 10px;
+      font-size: 0.92rem;
     }
 
-    .service-card ul li::before {
-      content: '\2713';
+    .service-card li::before {
+      content: '+';
       color: var(--accent-2);
-      font-weight: 700;
-      flex-shrink: 0;
+      font-weight: 800;
     }
 
-    /* CTA SECTION */
-    .cta-section {
-      text-align: center;
-      padding: 80px 0 120px;
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
+
+    .review-card {
+      padding: 22px;
+      min-height: 190px;
+    }
+
+    .stars {
+      color: var(--accent-3);
+      letter-spacing: 0.08em;
+      font-size: 0.88rem;
+      margin-bottom: 14px;
+    }
+
+    .review-card p { color: var(--text-muted); font-size: 0.92rem; }
+    .review-card strong { display: block; margin-top: 18px; font-size: 0.88rem; }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 22px;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.91rem;
+    }
+
+    .cta-section {
+      padding: 88px 0 110px;
+      background: linear-gradient(180deg, var(--bg), #111118);
+      text-align: center;
+    }
+
+    .cta-section .container { max-width: 760px; }
 
     .cta-section h2 {
-      font-size: 2.2rem;
+      font-size: clamp(2rem, 5vw, 3.3rem);
       margin-bottom: 16px;
     }
 
     .cta-section p {
       color: var(--text-muted);
-      margin-bottom: 32px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 28px;
+      max-width: 620px;
     }
 
-    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
-      padding: 32px 0;
-      text-align: center;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.86rem;
     }
 
-    footer a { color: var(--accent); text-decoration: none; }
+    footer a { color: var(--accent-2); text-decoration: none; }
 
-    /* MOBILE */
-    @media (max-width: 640px) {
-      .nav-links a:not(.cta-btn) { display: none; }
-      .featured-scene .scene-images img { flex: 0 0 85%; }
-      .hero h1 { font-size: 2rem; }
-      .portfolio-card img { height: 280px; }
-    }
-
-    /* LIGHTBOX */
     .lightbox {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 200;
-      background: rgba(0,0,0,0.92);
       align-items: center;
       justify-content: center;
+      padding: 22px;
+      background: rgba(0, 0, 0, 0.92);
       cursor: zoom-out;
     }
 
     .lightbox.active { display: flex; }
 
     .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
+      max-width: 94vw;
+      max-height: 92vh;
       border-radius: 8px;
       object-fit: contain;
+    }
+
+    @media (max-width: 880px) {
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(11, 11, 15, 0.46) 0%, rgba(11, 11, 15, 0.86) 42%, var(--bg) 100%),
+          url('images/comic-page1.png') top center / min(100vw, 560px) auto no-repeat;
+      }
+
+      .hero {
+        min-height: 760px;
+        align-items: end;
+        padding-top: 290px;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-header p { margin-top: 12px; }
+
+      .portfolio-grid, .process-grid, .reviews-grid, .faq-grid, .services-grid, .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scene-images {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+
+      .scene-images picture {
+        flex: 0 0 82%;
+        scroll-snap-align: start;
+      }
+
+      .process-step { min-height: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1120px); }
+      nav .container { min-height: 58px; }
+      .nav-links a:not(.cta-btn) { display: none; }
+      .nav-links { gap: 0; }
+      .nav-links .cta-btn { min-height: 40px; padding: 9px 14px; font-size: 0.88rem; }
+      .hero { min-height: 710px; padding: 260px 0 44px; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero-buttons { display: grid; grid-template-columns: 1fr; }
+      .quick-proof { grid-template-columns: 1fr; }
+      section { padding: 64px 0; }
+      .comparison { grid-template-columns: 1fr; }
+      .card-info, .service-card, .review-card, .faq-item { padding: 18px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav>
+  <nav aria-label="Primary navigation">
     <div class="container">
-      <span class="logo">KevCreates</span>
+      <a class="logo" href="#">KevCreates</a>
       <div class="nav-links">
-        <a href="#portfolio">Portfolio</a>
-        <a href="#process">Process</a>
+        <a href="#portfolio">Work</a>
+        <a href="#proof">Proof</a>
         <a href="#services">Services</a>
-        <a href="#hire" class="cta-btn" style="margin-left: 28px;">Hire Me</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Fiverr</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">AI-Powered Visual Production</span>
-        <h1>Script to Page.<br><span class="gradient-text">Quality Checked.</span></h1>
-        <p>AI-assisted manga and comic page production with panel planning, character consistency review, and visual QA on every delivery.</p>
-        <div class="hero-buttons">
-          <a href="#hire" class="cta-btn">View Services</a>
-          <a href="#portfolio" class="cta-btn cta-btn-outline">See My Work</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-header">
-        <h2>Recent Work</h2>
-        <p>AI-generated manga and comic pages with structured panel planning and visual quality assurance.</p>
-      </div>
-
-      <!-- Featured multi-page scene -->
-      <div class="featured-scene" onclick="openLightbox(event)">
-        <div class="scene-images">
-          <img src="images/comic-page1.png" alt="The Drop — cyberpunk comic page 1" loading="lazy">
-          <img src="images/comic-page2.png" alt="The Exchange — cyberpunk comic page 2" loading="lazy">
-          <img src="images/comic-page3.png" alt="The Escape — cyberpunk comic page 3" loading="lazy">
-        </div>
-        <div class="card-info">
-          <h3>Neon Alley — 3-Page Cyberpunk Scene</h3>
-          <p>Full-color cyberpunk comic sequence. Script-to-page production with character consistency across 10 panels, rain/neon lighting continuity, and visual QA pass.</p>
-          <div class="card-tags">
-            <span class="card-tag">Color Comic</span>
-            <span class="card-tag">3 Pages</span>
-            <span class="card-tag">Character Continuity</span>
-            <span class="card-tag">QA Reviewed</span>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">AI manga and comic pages for Fiverr buyers</p>
+          <h1>Turn your script into <span class="gradient-text">QA-checked comic pages.</span></h1>
+          <p>I create AI-assisted manga and comic pages with human panel planning, curated page art, character consistency review, and a compact proof note with every delivery.</p>
+          <div class="hero-buttons">
+            <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Hire Kev on Fiverr</a>
+            <a href="#portfolio" class="cta-btn cta-btn-outline">View Samples</a>
+          </div>
+          <div class="quick-proof" aria-label="Service highlights">
+            <div class="proof-pill"><strong>1-4 pages</strong><span>Starter and scene packages</span></div>
+            <div class="proof-pill"><strong>Panel plan</strong><span>Story beats before production</span></div>
+            <div class="proof-pill"><strong>QA report</strong><span>Readability, drift, artifacts</span></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Single cards -->
-      <div class="portfolio-grid">
-        <div class="portfolio-card" onclick="openLightbox(event)">
-          <img src="images/manga-bw-sample.png" alt="Black and white manga page sample" loading="lazy">
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Visual Samples</p>
+            <h2>Proof within the first scroll.</h2>
+          </div>
+          <p>Color comic scenes, black-and-white manga pages, character design, and a concept-to-3D pipeline sample. Tap any image for a larger view.</p>
+        </div>
+
+        <article class="featured-scene">
+          <div class="scene-images">
+            <picture>
+              <source srcset="images/comic-page1.webp" type="image/webp">
+              <img src="images/comic-page1.png" width="1024" height="1536" alt="Cyberpunk comic page 1 with courier running through neon rain" fetchpriority="high" onclick="openLightbox(event)">
+            </picture>
+            <picture>
+              <source srcset="images/comic-page2.webp" type="image/webp">
+              <img src="images/comic-page2.png" width="1024" height="1536" alt="Cyberpunk comic page 2 showing a tense data chip exchange" loading="lazy" onclick="openLightbox(event)">
+            </picture>
+            <picture>
+              <source srcset="images/comic-page3.webp" type="image/webp">
+              <img src="images/comic-page3.png" width="1024" height="1536" alt="Cyberpunk comic page 3 with rooftop escape action" loading="lazy" onclick="openLightbox(event)">
+            </picture>
+          </div>
           <div class="card-info">
-            <h3>Cliffside — B&W Manga Page</h3>
-            <p>Classic manga-style page with dramatic composition. 3 panels, single character, speed-line action beats.</p>
+            <h3>The Courier's Run - 3-page cyberpunk scene</h3>
+            <p>Standard-tier style sample: 12 panels across 3 pages with two recurring characters, rain and neon continuity, and page-by-page action beats.</p>
             <div class="card-tags">
-              <span class="card-tag">Manga</span>
-              <span class="card-tag">B&W</span>
-              <span class="card-tag">Action</span>
+              <span class="card-tag">Color comic</span>
+              <span class="card-tag">3 pages</span>
+              <span class="card-tag">Character continuity</span>
+              <span class="card-tag">QA workflow</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="portfolio-card" onclick="openLightbox(event)">
-          <img src="images/dragon-mascot.png" alt="Chibi dragon mascot character design" loading="lazy">
-          <div class="card-info">
-            <h3>Dragon Mascot — Character Design</h3>
-            <p>Original chibi mascot concept. AI-generated with multiple revision passes and style refinement.</p>
-            <div class="card-tags">
-              <span class="card-tag">Character Design</span>
-              <span class="card-tag">Mascot</span>
-              <span class="card-tag">Chibi</span>
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <picture>
+              <source srcset="images/manga-bw-sample.webp" type="image/webp">
+              <img src="images/manga-bw-sample.png" width="1024" height="1536" alt="Black and white manga page with dramatic action panels" loading="lazy" onclick="openLightbox(event)">
+            </picture>
+            <div class="card-info">
+              <h3>B&W Manga Page</h3>
+              <p>Dramatic manga sample with strong panel rhythm, action motion, and high-contrast readability.</p>
+              <div class="card-tags">
+                <span class="card-tag">Manga</span>
+                <span class="card-tag">Black and white</span>
+                <span class="card-tag">Action</span>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="portfolio-card" onclick="openLightbox(event)">
-          <img src="images/dragon-3d-model.png" alt="Toon-shaded 3D dragon model" loading="lazy">
-          <div class="card-info">
-            <h3>Dragon — 3D Toon Model</h3>
-            <p>AI concept to 3D pipeline: concept art, image-to-3D generation, Blender cleanup, toon shader render.</p>
-            <div class="card-tags">
-              <span class="card-tag">3D Model</span>
-              <span class="card-tag">Toon Shader</span>
-              <span class="card-tag">Pipeline</span>
+          <article class="portfolio-card square">
+            <picture>
+              <source srcset="images/dragon-mascot.webp" type="image/webp">
+              <img src="images/dragon-mascot.png" width="512" height="512" alt="Original chibi dragon mascot character design" loading="lazy" onclick="openLightbox(event)">
+            </picture>
+            <div class="card-info">
+              <h3>Dragon Mascot</h3>
+              <p>Character design sample showing mascot ideation and style refinement for reusable original characters.</p>
+              <div class="card-tags">
+                <span class="card-tag">Character sheet add-on</span>
+                <span class="card-tag">Mascot</span>
+              </div>
             </div>
+          </article>
+
+          <article class="portfolio-card square">
+            <picture>
+              <source srcset="images/dragon-3d-model.webp" type="image/webp">
+              <img src="images/dragon-3d-model.png" width="512" height="512" alt="Toon-shaded 3D dragon model render" loading="lazy" onclick="openLightbox(event)">
+            </picture>
+            <div class="card-info">
+              <h3>Concept to 3D Toon Render</h3>
+              <p>Proof of a broader visual pipeline: concept art, image-to-3D generation, cleanup, and toon-shaded render.</p>
+              <div class="card-tags">
+                <span class="card-tag">3D pipeline</span>
+                <span class="card-tag">Toon render</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Before, After, QA</p>
+            <h2>Buyers get a workflow, not an image dump.</h2>
           </div>
+          <p>The Basic sample includes a draft candidate, a final curated page, and a compact QA report covering readability, consistency, anatomy, composition, artifacts, and style.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-panel">
+            <div class="comparison">
+              <figure>
+                <picture>
+                  <source srcset="images/basic-sample-v1-2panel.webp" type="image/webp">
+                  <img src="images/basic-sample-v1-2panel.png" width="1024" height="1536" alt="Earlier manga page draft before final curation" loading="lazy" onclick="openLightbox(event)">
+                </picture>
+                <figcaption>Draft candidate</figcaption>
+              </figure>
+              <figure>
+                <picture>
+                  <source srcset="images/basic-sample-final.webp" type="image/webp">
+                  <img src="images/basic-sample-final.png" width="1024" height="1536" alt="Final curated black and white manga page after QA pass" loading="lazy" onclick="openLightbox(event)">
+                </picture>
+                <figcaption>Final QA pass</figcaption>
+              </figure>
+            </div>
+            <div class="card-info">
+              <h3>Dawn Patrol - Basic tier sample</h3>
+              <p>One page, four panels, one original character, black-and-white manga look, panel plan, final page, and QA note.</p>
+            </div>
+          </article>
+          <article class="proof-panel">
+            <div class="card-info">
+              <p class="eyebrow">QA report sample</p>
+              <h3>Visual checks included in delivery</h3>
+              <ul class="qa-list">
+                <li>Panel readability: clear top-to-bottom action flow and camera variety.</li>
+                <li>Character continuity: hair, scarf, outfit, and weapon details checked across panels.</li>
+                <li>Anatomy and artifact scan: no obvious hand, face, prop, or warped text failures accepted.</li>
+                <li>Composition: clean borders, readable gutters, and no confusing bleed overlap.</li>
+                <li>Style consistency: line weight and screentone density reviewed before final delivery.</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROCESS -->
-  <section id="process" style="background: var(--surface);">
-    <div class="container">
-      <div class="section-header">
-        <h2>How It Works</h2>
-        <p>A structured production pipeline — not just random AI image dumps.</p>
+    <section id="process" style="background: var(--surface-2);">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Process</p>
+            <h2>Clear steps from story beat to files.</h2>
+          </div>
+          <p>Designed for writers, indie creators, game teams, roleplay communities, and founders who need fast comic-style visuals with structure.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step">
+            <span class="step-number">1</span>
+            <h3>Brief and rights check</h3>
+            <p>You send the script, scene idea, character descriptions, references you can use, format, deadline, and intended use.</p>
+          </article>
+          <article class="process-step">
+            <span class="step-number">2</span>
+            <h3>Panel plan</h3>
+            <p>I map camera angles, action beats, character focus, and dialogue placement notes before image production.</p>
+          </article>
+          <article class="process-step">
+            <span class="step-number">3</span>
+            <h3>Generate and curate</h3>
+            <p>AI candidates are created, compared, refined, and selected for the strongest storytelling and visual continuity.</p>
+          </article>
+          <article class="process-step">
+            <span class="step-number">4</span>
+            <h3>QA and delivery</h3>
+            <p>You receive final PNG/JPG pages plus the selected package's production notes, prompt direction, or QA report.</p>
+          </article>
+        </div>
       </div>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <h3>Brief & Script</h3>
-          <p>Send your script, scene outline, or character descriptions. I'll clarify scope and plan the panels.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <h3>Panel Planning</h3>
-          <p>Each page gets a structured layout plan — camera angles, character placement, action beats, dialogue flow.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <h3>Generate & Curate</h3>
-          <p>AI generation produces multiple candidates per panel. I pick the strongest and refine for consistency.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">4</div>
-          <h3>Visual QA & Deliver</h3>
-          <p>Every page gets a quality check: character continuity, anatomy, artifacts, and composition — then you get the files plus production notes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="section-header">
-        <h2>Services & Pricing</h2>
-        <p>Clear scope, transparent pricing, quality-checked delivery.</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="tier-label">Starter</div>
-          <div class="price">$55</div>
-          <h3>1 Manga / Comic Page</h3>
-          <ul>
-            <li>Up to 4 panels</li>
-            <li>1 character or simple cast</li>
-            <li>B&W manga or simple color</li>
-            <li>Panel plan included</li>
-            <li>Visual QA note</li>
-            <li>1 revision pass</li>
-            <li>3-day delivery</li>
-          </ul>
-          <a href="#hire" class="cta-btn" style="width: 100%; text-align: center;">Get Started</a>
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Fiverr Packages</p>
+            <h2>Pick the scope that matches your scene.</h2>
+          </div>
+          <p>Launch package language mirrors the Fiverr gig so visitors can move from portfolio to order without relearning the offer.</p>
         </div>
-        <div class="service-card">
-          <div class="tier-label">Standard</div>
-          <div class="price">$325</div>
-          <h3>3-4 Page Comic Scene</h3>
-          <ul>
-            <li>Up to 16 panels across 3-4 pages</li>
-            <li>Up to 3 recurring characters</li>
-            <li>Character consistency pass</li>
-            <li>Full prompt direction pack</li>
-            <li>Visual QA report with notes</li>
-            <li>1 revision pass</li>
-            <li>6-day delivery</li>
-          </ul>
-          <a href="#hire" class="cta-btn" style="width: 100%; text-align: center;">Get Started</a>
+        <div class="services-grid">
+          <article class="service-card">
+            <p class="tier-label">Basic</p>
+            <p class="price">$55</p>
+            <h3>1 Manga / Comic Page Starter</h3>
+            <ul>
+              <li>1 page with up to 4 panels</li>
+              <li>1 character or simple cast</li>
+              <li>Black-and-white manga or simple color comic look</li>
+              <li>Panel plan and curated final page image</li>
+              <li>Compact QA note and 1 revision pass</li>
+              <li>3-day delivery</li>
+            </ul>
+            <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Start on Fiverr</a>
+          </article>
+
+          <article class="service-card featured">
+            <p class="tier-label">Standard</p>
+            <p class="price">$325</p>
+            <h3>3-4 Page Comic Scene</h3>
+            <ul>
+              <li>3-4 pages with up to 16 total panels</li>
+              <li>Up to 3 recurring characters</li>
+              <li>Panel plan from script or outline</li>
+              <li>Character and scene consistency pass</li>
+              <li>Prompt direction pack and visual QA report</li>
+              <li>6-day delivery and 1 revision pass</li>
+            </ul>
+            <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Book Standard</a>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section id="hire" class="cta-section">
-    <div class="container">
-      <h2>Ready to bring your story to life?</h2>
-      <p>Send me your script or scene idea. I'll plan the panels, generate the art, and deliver quality-checked pages.</p>
-      <div class="hero-buttons">
-        <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Hire on Fiverr</a>
+    <section id="social-proof" style="background: var(--surface-2);">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Social Proof</p>
+            <h2>Review slots ready for first Fiverr buyers.</h2>
+          </div>
+          <p>These placeholders make the trust section available now and easy to replace with real buyer reviews after the first orders land.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Fast, structured page planning and a clear QA note made the delivery easy to review."</p>
+            <strong>Future Fiverr review</strong>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"The comic page felt like a planned scene, not a random image. The revision pass was scoped clearly."</p>
+            <strong>Future Fiverr review</strong>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Great for turning an indie story beat into a polished visual proof-of-concept."</p>
+            <strong>Future Fiverr review</strong>
+          </article>
+        </div>
       </div>
-      <p style="margin-top: 20px; font-size: 0.85rem;">Or reach out directly: <a href="mailto:kevhamm07@gmail.com" style="color: var(--accent);">kevhamm07@gmail.com</a></p>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">FAQ</p>
+            <h2>Common buyer questions.</h2>
+          </div>
+          <p>Matched to the Fiverr listing so the portfolio answers objections before a buyer clicks through.</p>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>Is this hand-drawn art?</h3>
+            <p>No. This is AI-assisted comic and manga page creation with human planning, curation, editing direction, and visual QA.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can you copy a specific artist's style?</h3>
+            <p>No. I can work with broad directions like black-and-white manga or cinematic sci-fi comic, but I will not copy a living artist or studio exactly.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can I use the pages commercially?</h3>
+            <p>Commercial use is available when you provide original characters, licensed references, or references you have permission to use. You are responsible for rights clearance.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Will characters match perfectly in every panel?</h3>
+            <p>AI-assisted comic work can vary between panels. Standard includes stronger continuity review to reduce obvious drift, but exact replication is not guaranteed.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Do you include lettering?</h3>
+            <p>Basic composition guidance is included. Full lettering, speech balloon cleanup, and typography can be added as an extra or custom offer.</p>
+          </article>
+          <article class="faq-item">
+            <h3>What files do I receive?</h3>
+            <p>PNG or JPG final pages by default. Standard includes prompt or production notes and a visual QA report. Source project files are not included unless agreed in a custom offer.</p>
+          </article>
+          <article class="faq-item">
+            <h3>What counts as a revision?</h3>
+            <p>A revision is a scoped adjustment like fixing visible artifacts, improving panel clarity, or adjusting a character detail. New scripts or style directions need a new order or add-on.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can you make NSFW, celebrity, or copyrighted fan art?</h3>
+            <p>No explicit sexual content, non-consensual likeness work, or exact copyrighted character replication. Original genre-inspired characters are fine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hire" class="cta-section">
+      <div class="container">
+        <p class="eyebrow">Ready when your scene is</p>
+        <h2>Send the story beat. Get a planned, quality-checked comic page.</h2>
+        <p>Share your script, page count, character details, style direction, deadline, and intended use. If the panel count is unclear, I can suggest a simple plan inside the package scope.</p>
+        <div class="hero-buttons" style="justify-content:center">
+          <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Hire on Fiverr</a>
+          <a href="mailto:kevhamm07@gmail.com" class="cta-btn cta-btn-outline">Email Kev</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
     <div class="container">
-      <p>&copy; 2026 KevCreates. AI-assisted visual production.</p>
+      <p>&copy; 2026 KevCreates. AI-assisted manga and comic production. <a href="https://www.fiverr.com/sellers/kev_hamm/" target="_blank" rel="noopener">Fiverr profile</a></p>
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Full size preview">
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="Full-size portfolio preview">
   </div>
 
   <script>
-    function openLightbox(e) {
-      const img = e.target.closest('img');
-      if (!img) return;
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox').classList.add('active');
+    function openLightbox(event) {
+      event.stopPropagation();
+      const img = event.currentTarget;
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
     }
+
     function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.getElementById('lightbox-img').src = '';
     }
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeLightbox();
     });
   </script>
-
 </body>
 </html>
