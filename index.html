@@ -597,15 +597,17 @@
     @media (max-width: 880px) {
       .hero::before {
         background:
-          linear-gradient(180deg, rgba(11, 11, 15, 0.46) 0%, rgba(11, 11, 15, 0.86) 42%, var(--bg) 100%),
-          url('images/comic-page1.png') top center / min(100vw, 560px) auto no-repeat;
+          linear-gradient(180deg, rgba(11, 11, 15, 0.2) 0%, rgba(11, 11, 15, 0.78) 34%, rgba(11, 11, 15, 0.96) 64%, var(--bg) 100%),
+          url('images/comic-page1.png') top center / min(100vw, 500px) auto no-repeat;
       }
 
       .hero {
-        min-height: 690px;
+        min-height: 640px;
         align-items: end;
-        padding-top: 230px;
+        padding: 190px 0 44px;
       }
+
+      .hero-content { padding: 18px 0 0; }
 
       .section-header {
         display: block;
@@ -637,11 +639,23 @@
       .nav-links a:not(.cta-btn) { display: none; }
       .nav-links { gap: 0; }
       .nav-links .cta-btn { min-height: 40px; padding: 9px 14px; font-size: 0.88rem; }
-      .hero { min-height: 650px; padding: 220px 0 40px; }
-      .hero h1 { font-size: 2.5rem; }
+      .hero {
+        min-height: 600px;
+        padding: 180px 0 36px;
+      }
+      .hero h1 {
+        font-size: 2.15rem;
+        margin: 10px 0 14px;
+      }
+      .hero p { font-size: 0.98rem; }
       .hero-buttons { display: grid; grid-template-columns: 1fr; }
+      .hero-buttons, .quick-proof { margin-top: 22px; }
       .quick-proof { grid-template-columns: 1fr; }
-      .hero-samples { max-width: 100%; }
+      .hero-samples {
+        max-width: 100%;
+        gap: 8px;
+        margin-top: 22px;
+      }
       section { padding: 64px 0; }
       .comparison { grid-template-columns: 1fr; }
       .card-info, .service-card, .review-card, .faq-item { padding: 18px; }
