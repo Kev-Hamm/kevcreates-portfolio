@@ -137,7 +137,7 @@
     .nav-links .cta-btn { color: #fff; }
 
     .hero {
-      min-height: calc(100vh - 64px);
+      min-height: 720px;
       display: grid;
       align-items: center;
       padding: 64px 0 56px;
@@ -192,6 +192,31 @@
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 30px;
+    }
+
+    .hero-samples {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 470px;
+      margin-top: 26px;
+    }
+
+    .hero-samples picture {
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #050508;
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34);
+    }
+
+    .hero-samples img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      cursor: zoom-in;
     }
 
     .quick-proof {
@@ -301,6 +326,10 @@
       gap: 22px;
     }
 
+    .portfolio-grid.two-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .portfolio-card img {
       display: block;
       width: 100%;
@@ -311,6 +340,18 @@
     }
 
     .portfolio-card.square img { aspect-ratio: 1 / 1; }
+
+    .extras-band {
+      margin-top: 28px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(29, 29, 39, 0.68);
+    }
+
+    .extras-band .section-header {
+      margin-bottom: 20px;
+    }
 
     .proof-grid {
       display: grid;
@@ -561,9 +602,9 @@
       }
 
       .hero {
-        min-height: 760px;
+        min-height: 690px;
         align-items: end;
-        padding-top: 290px;
+        padding-top: 230px;
       }
 
       .section-header {
@@ -572,7 +613,7 @@
 
       .section-header p { margin-top: 12px; }
 
-      .portfolio-grid, .process-grid, .reviews-grid, .faq-grid, .services-grid, .proof-grid {
+      .portfolio-grid, .portfolio-grid.two-up, .process-grid, .reviews-grid, .faq-grid, .services-grid, .proof-grid {
         grid-template-columns: 1fr;
       }
 
@@ -596,10 +637,11 @@
       .nav-links a:not(.cta-btn) { display: none; }
       .nav-links { gap: 0; }
       .nav-links .cta-btn { min-height: 40px; padding: 9px 14px; font-size: 0.88rem; }
-      .hero { min-height: 710px; padding: 260px 0 44px; }
+      .hero { min-height: 650px; padding: 220px 0 40px; }
       .hero h1 { font-size: 2.5rem; }
       .hero-buttons { display: grid; grid-template-columns: 1fr; }
       .quick-proof { grid-template-columns: 1fr; }
+      .hero-samples { max-width: 100%; }
       section { padding: 64px 0; }
       .comparison { grid-template-columns: 1fr; }
       .card-info, .service-card, .review-card, .faq-item { padding: 18px; }
@@ -631,6 +673,20 @@
             <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Hire Kev on Fiverr</a>
             <a href="#portfolio" class="cta-btn cta-btn-outline">View Samples</a>
           </div>
+          <div class="hero-samples" aria-label="Featured comic samples">
+            <picture>
+              <source srcset="images/comic-page1.webp" type="image/webp">
+              <img src="images/comic-page1.png" width="1024" height="1536" alt="Featured cyberpunk comic page 1 preview" fetchpriority="high" onclick="openLightbox(event)">
+            </picture>
+            <picture>
+              <source srcset="images/comic-page2.webp" type="image/webp">
+              <img src="images/comic-page2.png" width="1024" height="1536" alt="Featured cyberpunk comic page 2 preview" loading="eager" onclick="openLightbox(event)">
+            </picture>
+            <picture>
+              <source srcset="images/manga-bw-sample.webp" type="image/webp">
+              <img src="images/manga-bw-sample.png" width="1024" height="1536" alt="Featured black and white manga page preview" loading="eager" onclick="openLightbox(event)">
+            </picture>
+          </div>
           <div class="quick-proof" aria-label="Service highlights">
             <div class="proof-pill"><strong>1-4 pages</strong><span>Starter and scene packages</span></div>
             <div class="proof-pill"><strong>Panel plan</strong><span>Story beats before production</span></div>
@@ -647,7 +703,7 @@
             <p class="eyebrow">Visual Samples</p>
             <h2>Proof within the first scroll.</h2>
           </div>
-          <p>Color comic scenes, black-and-white manga pages, character design, and a concept-to-3D pipeline sample. Tap any image for a larger view.</p>
+          <p>Color comic scenes and black-and-white manga samples stay first so buyers immediately see the core Fiverr offer. Tap any image for a larger view.</p>
         </div>
 
         <article class="featured-scene">
@@ -677,7 +733,7 @@
           </div>
         </article>
 
-        <div class="portfolio-grid">
+        <div class="portfolio-grid two-up">
           <article class="portfolio-card">
             <picture>
               <source srcset="images/manga-bw-sample.webp" type="image/webp">
@@ -694,36 +750,63 @@
             </div>
           </article>
 
-          <article class="portfolio-card square">
+          <article class="portfolio-card">
             <picture>
-              <source srcset="images/dragon-mascot.webp" type="image/webp">
-              <img src="images/dragon-mascot.png" width="512" height="512" alt="Original chibi dragon mascot character design" loading="lazy" onclick="openLightbox(event)">
+              <source srcset="images/basic-sample-final.webp" type="image/webp">
+              <img src="images/basic-sample-final.png" width="1024" height="1536" alt="Final curated black and white manga page after QA pass" loading="lazy" onclick="openLightbox(event)">
             </picture>
             <div class="card-info">
-              <h3>Dragon Mascot</h3>
-              <p>Character design sample showing mascot ideation and style refinement for reusable original characters.</p>
+              <h3>Basic Tier Final Page</h3>
+              <p>Finished one-page manga sample used as public proof for the starter offer.</p>
               <div class="card-tags">
-                <span class="card-tag">Character sheet add-on</span>
-                <span class="card-tag">Mascot</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="portfolio-card square">
-            <picture>
-              <source srcset="images/dragon-3d-model.webp" type="image/webp">
-              <img src="images/dragon-3d-model.png" width="512" height="512" alt="Toon-shaded 3D dragon model render" loading="lazy" onclick="openLightbox(event)">
-            </picture>
-            <div class="card-info">
-              <h3>Concept to 3D Toon Render</h3>
-              <p>Proof of a broader visual pipeline: concept art, image-to-3D generation, cleanup, and toon-shaded render.</p>
-              <div class="card-tags">
-                <span class="card-tag">3D pipeline</span>
-                <span class="card-tag">Toon render</span>
+                <span class="card-tag">Basic tier</span>
+                <span class="card-tag">Final QA pass</span>
+                <span class="card-tag">One page</span>
               </div>
             </div>
           </article>
         </div>
+
+        <aside class="extras-band" aria-label="Character and pipeline extras">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Character / Pipeline Extras</p>
+              <h2>Add-on proof after the core comic samples.</h2>
+            </div>
+            <p>Mascot and 3D work are still useful, but they sit behind the manga samples so the buyer path stays focused.</p>
+          </div>
+          <div class="portfolio-grid two-up">
+            <article class="portfolio-card square">
+              <picture>
+                <source srcset="images/dragon-mascot.webp" type="image/webp">
+                <img src="images/dragon-mascot.png" width="512" height="512" alt="Original chibi dragon mascot character design" loading="lazy" onclick="openLightbox(event)">
+              </picture>
+              <div class="card-info">
+                <h3>Dragon Mascot</h3>
+                <p>Character design sample showing mascot ideation and style refinement for reusable original characters.</p>
+                <div class="card-tags">
+                  <span class="card-tag">Character add-on</span>
+                  <span class="card-tag">Mascot</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="portfolio-card square">
+              <picture>
+                <source srcset="images/dragon-3d-model.webp" type="image/webp">
+                <img src="images/dragon-3d-model.png" width="512" height="512" alt="Toon-shaded 3D dragon model render" loading="lazy" onclick="openLightbox(event)">
+              </picture>
+              <div class="card-info">
+                <h3>Concept to 3D Toon Render</h3>
+                <p>Proof of a broader visual pipeline: concept art, image-to-3D generation, cleanup, and toon-shaded render.</p>
+                <div class="card-tags">
+                  <span class="card-tag">3D pipeline</span>
+                  <span class="card-tag">Toon render</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </aside>
       </div>
     </section>
 
