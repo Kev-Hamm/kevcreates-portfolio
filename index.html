@@ -167,6 +167,9 @@
     .hero-content {
       max-width: 650px;
       padding: 28px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .hero h1 {
@@ -192,6 +195,7 @@
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 30px;
+      order: 1;
     }
 
     .hero-samples {
@@ -200,6 +204,7 @@
       gap: 10px;
       max-width: 470px;
       margin-top: 26px;
+      order: 2;
     }
 
     .hero-samples picture {
@@ -225,6 +230,7 @@
       gap: 12px;
       margin-top: 30px;
       max-width: 650px;
+      order: 3;
     }
 
     .proof-pill {
@@ -654,8 +660,17 @@
       .hero-samples {
         max-width: 100%;
         gap: 8px;
-        margin-top: 22px;
+        margin-top: 18px;
+        order: 1;
       }
+      .hero-buttons { order: 2; }
+      .quick-proof { order: 3; }
+      .hero-samples img {
+        aspect-ratio: 4 / 3;
+        object-position: center top;
+      }
+      .hero-samples img.hero-sample-page2 { object-position: 22% top; }
+      .hero-samples img.hero-sample-manga { object-position: 78% top; }
       section { padding: 64px 0; }
       .comparison { grid-template-columns: 1fr; }
       .card-info, .service-card, .review-card, .faq-item { padding: 18px; }
@@ -683,23 +698,23 @@
           <p class="eyebrow">AI manga and comic pages for Fiverr buyers</p>
           <h1>Turn your script into <span class="gradient-text">QA-checked comic pages.</span></h1>
           <p>I create AI-assisted manga and comic pages with human panel planning, curated page art, character consistency review, and a compact proof note with every delivery.</p>
-          <div class="hero-buttons">
-            <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Hire Kev on Fiverr</a>
-            <a href="#portfolio" class="cta-btn cta-btn-outline">View Samples</a>
-          </div>
           <div class="hero-samples" aria-label="Featured comic samples">
             <picture>
               <source srcset="images/comic-page1.webp" type="image/webp">
-              <img src="images/comic-page1.png" width="1024" height="1536" alt="Featured cyberpunk comic page 1 preview" fetchpriority="high" onclick="openLightbox(event)">
+              <img class="hero-sample-page1" src="images/comic-page1.png" width="1024" height="1536" alt="Featured cyberpunk comic page 1 preview" fetchpriority="high" onclick="openLightbox(event)">
             </picture>
             <picture>
               <source srcset="images/comic-page2.webp" type="image/webp">
-              <img src="images/comic-page2.png" width="1024" height="1536" alt="Featured cyberpunk comic page 2 preview" loading="eager" onclick="openLightbox(event)">
+              <img class="hero-sample-page2" src="images/comic-page2.png" width="1024" height="1536" alt="Featured cyberpunk comic page 2 preview" loading="eager" onclick="openLightbox(event)">
             </picture>
             <picture>
               <source srcset="images/manga-bw-sample.webp" type="image/webp">
-              <img src="images/manga-bw-sample.png" width="1024" height="1536" alt="Featured black and white manga page preview" loading="eager" onclick="openLightbox(event)">
+              <img class="hero-sample-manga" src="images/manga-bw-sample.png" width="1024" height="1536" alt="Featured black and white manga page preview" loading="eager" onclick="openLightbox(event)">
             </picture>
+          </div>
+          <div class="hero-buttons">
+            <a href="https://www.fiverr.com/sellers/kev_hamm/" class="cta-btn" target="_blank" rel="noopener">Hire Kev on Fiverr</a>
+            <a href="#portfolio" class="cta-btn cta-btn-outline">View Samples</a>
           </div>
           <div class="quick-proof" aria-label="Service highlights">
             <div class="proof-pill"><strong>1-4 pages</strong><span>Starter and scene packages</span></div>
