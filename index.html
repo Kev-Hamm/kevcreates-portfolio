@@ -184,6 +184,8 @@
       background-clip: text;
     }
 
+    .mobile-break { display: none; }
+
     .hero p {
       max-width: 610px;
       color: var(--text-muted);
@@ -629,11 +631,17 @@
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
+        gap: 10px;
+        padding: 10px;
       }
 
       .scene-images picture {
-        flex: 0 0 82%;
+        flex: 0 0 min(86%, 420px);
         scroll-snap-align: start;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #050508;
       }
 
       .process-step { min-height: auto; }
@@ -650,9 +658,15 @@
         padding: 180px 0 36px;
       }
       .hero h1 {
-        font-size: 2.15rem;
+        font-size: clamp(1.7rem, 8.2vw, 1.92rem);
+        line-height: 1.08;
         margin: 10px 0 14px;
+        overflow-wrap: anywhere;
       }
+      .hero h1 .gradient-text {
+        display: block;
+      }
+      .mobile-break { display: block; }
       .hero p { font-size: 0.98rem; }
       .hero-buttons { display: grid; grid-template-columns: 1fr; }
       .hero-buttons, .quick-proof { margin-top: 22px; }
@@ -660,16 +674,16 @@
       .hero-samples {
         display: flex;
         max-width: 100%;
-        gap: 10px;
+        gap: 12px;
         margin-top: 18px;
         order: 1;
         overflow-x: auto;
-        padding-bottom: 6px;
+        padding: 2px 4px 8px 0;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
       }
       .hero-samples picture {
-        flex: 0 0 44%;
+        flex: 0 0 min(78vw, 330px);
         aspect-ratio: 2 / 3;
         scroll-snap-align: start;
       }
@@ -682,9 +696,14 @@
         object-position: center center;
       }
       .scene-images img,
+      .portfolio-card img,
       .comparison img {
         object-fit: contain;
         background: #050508;
+      }
+      .portfolio-card img {
+        height: auto;
+        aspect-ratio: auto;
       }
       section { padding: 64px 0; }
       .comparison { grid-template-columns: 1fr; }
@@ -711,7 +730,7 @@
       <div class="container">
         <div class="hero-content">
           <p class="eyebrow">AI manga and comic pages for Fiverr buyers</p>
-          <h1>Turn your script into <span class="gradient-text">QA-checked comic pages.</span></h1>
+          <h1>Turn your script into <span class="gradient-text">QA-checked <span class="mobile-break"></span>comic pages.</span></h1>
           <p>I create AI-assisted manga and comic pages with human panel planning, curated page art, character consistency review, and a compact proof note with every delivery.</p>
           <div class="hero-samples" aria-label="Featured comic samples">
             <picture>
