@@ -629,14 +629,17 @@
 
       .scene-images {
         display: flex;
+        width: 100%;
+        max-width: 100%;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        gap: 10px;
-        padding: 10px;
+        scrollbar-width: none;
+        gap: 0;
+        padding: 0;
       }
 
       .scene-images picture {
-        flex: 0 0 min(86%, 420px);
+        flex: 0 0 100%;
         scroll-snap-align: start;
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 8px;
@@ -649,6 +652,7 @@
 
     @media (max-width: 640px) {
       .container { width: min(100% - 28px, 1120px); }
+      body { overflow-x: hidden; }
       nav .container { min-height: 58px; }
       .nav-links a:not(.cta-btn) { display: none; }
       .nav-links { gap: 0; }
@@ -673,6 +677,7 @@
       .quick-proof { grid-template-columns: 1fr; }
       .hero-samples {
         display: flex;
+        width: 100%;
         max-width: 100%;
         gap: 12px;
         margin-top: 18px;
@@ -680,10 +685,15 @@
         overflow-x: auto;
         padding: 2px 4px 8px 0;
         scroll-snap-type: x mandatory;
+        scrollbar-width: none;
         -webkit-overflow-scrolling: touch;
       }
+      .hero-samples::-webkit-scrollbar,
+      .scene-images::-webkit-scrollbar {
+        display: none;
+      }
       .hero-samples picture {
-        flex: 0 0 min(78vw, 330px);
+        flex: 0 0 100%;
         aspect-ratio: 2 / 3;
         scroll-snap-align: start;
       }
