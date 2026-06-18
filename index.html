@@ -377,7 +377,7 @@
 
     .comparison figure {
       position: relative;
-      background: #050508;
+      background: #f4f1ea;
     }
 
     .comparison img {
@@ -394,8 +394,8 @@
       top: 12px;
       padding: 6px 9px;
       border-radius: 6px;
-      background: rgba(0, 0, 0, 0.68);
-      color: var(--text);
+      background: rgba(255, 255, 255, 0.82);
+      color: #08080b;
       font-size: 0.78rem;
       font-weight: 700;
     }
@@ -709,7 +709,11 @@
       .portfolio-card img,
       .comparison img {
         object-fit: contain;
-        background: #050508;
+        background: transparent;
+      }
+      .comparison img {
+        height: auto;
+        aspect-ratio: auto;
       }
       .portfolio-card img {
         height: auto;
@@ -897,17 +901,17 @@
             <div class="comparison">
               <figure>
                 <picture>
-                  <source srcset="images/basic-sample-v1-2panel.webp" type="image/webp">
-                  <img src="images/basic-sample-v1-2panel.png" width="1024" height="1536" alt="Earlier manga page draft before final curation" loading="lazy" onclick="openLightbox(event)">
-                </picture>
-                <figcaption>Draft candidate</figcaption>
-              </figure>
-              <figure>
-                <picture>
                   <source srcset="images/basic-sample-final.webp" type="image/webp">
                   <img src="images/basic-sample-final.png" width="1024" height="1536" alt="Final curated black and white manga page after QA pass" loading="lazy" onclick="openLightbox(event)">
                 </picture>
                 <figcaption>Final QA pass</figcaption>
+              </figure>
+              <figure>
+                <picture>
+                  <source srcset="images/basic-sample-v1-2panel.webp" type="image/webp">
+                  <img src="images/basic-sample-v1-2panel.png" width="1024" height="1536" alt="Earlier manga page draft before final curation" loading="lazy" onclick="openLightbox(event)">
+                </picture>
+                <figcaption>Draft candidate</figcaption>
               </figure>
             </div>
             <div class="card-info">
