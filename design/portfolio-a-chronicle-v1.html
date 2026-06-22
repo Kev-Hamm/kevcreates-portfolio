@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kev — Full-Stack AI Architect & World Builder</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Cardo:wght@700&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #42f59e;
+      --red: #ff3b56;
+      --purple: #7567ff;
+      --cyan: #48e7ff;
+      --dark: #050814;
+      --surface: #0d1117;
+      --panel: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #e8e9ed;
+      --muted: #8fa0c2;
+      --accent: rgba(66, 245, 158, 0.2);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* SPEED LINES BG */
+    .speed-lines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: repeating-conic-gradient(
+        from 0deg at 50% 120%,
+        transparent 0deg,
+        rgba(66, 245, 158, 0.015) 0.5deg,
+        transparent 1deg
+      );
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: rgba(5, 8, 20, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(66, 245, 158, 0.2);
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ========== HERO: MANGA PANEL GRID ========== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 60vh 40vh;
+      gap: 3px;
+      padding-top: 64px;
+      z-index: 1;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(66, 245, 158, 0.15);
+      background: var(--surface);
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.012) 2px,
+        rgba(255, 255, 255, 0.012) 4px
+      );
+      pointer-events: none;
+    }
+
+    .panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .panel-main {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 48px;
+      background: linear-gradient(135deg, #050814 0%, #0a0f20 60%, rgba(117, 103, 255, 0.12) 100%);
+      position: relative;
+    }
+
+    .panel-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 0%, transparent 48%, rgba(255, 59, 86, 0.08) 50%, transparent 52%, transparent 100%),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(66, 245, 158, 0.03) 40px, rgba(66, 245, 158, 0.03) 42px);
+      pointer-events: none;
+    }
+
+    .panel-main .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .panel-main .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .panel-main h1 {
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .panel-main h1 em {
+      font-style: normal;
+      color: var(--red);
+      display: block;
+      text-shadow: 0 0 20px rgba(255, 59, 86, 0.4);
+    }
+
+    .panel-main p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 400px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      font-family: 'Inter', sans-serif;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #050814;
+      padding: 14px 28px;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      box-shadow: 0 8px 24px rgba(66, 245, 158, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 0 12px 32px rgba(66, 245, 158, 0.5);
+      background: #5fffff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 14px 28px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 2px solid var(--border);
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: inset 0 0 20px rgba(72, 231, 255, 0.1);
+    }
+
+    /* PANEL TOP-RIGHT — LIVING WORLD PREVIEW */
+    .panel-world {
+      grid-column: 2;
+      grid-row: 1;
+      background: radial-gradient(circle at 40% 40%, rgba(72, 231, 255, 0.15), transparent 55%),
+                  radial-gradient(circle at 75% 65%, rgba(117, 103, 255, 0.2), transparent 45%),
+                  #080d13;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .world-gem {
+      width: 140px;
+      height: 140px;
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px rgba(72, 231, 255, 0.6)) drop-shadow(0 0 60px rgba(72, 231, 255, 0.3));
+    }
+
+    .world-gem svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(3deg);
+      }
+    }
+
+    .panel-world-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+
+    /* PANEL BOTTOM-RIGHT — AGENT STRIP */
+    .panel-agents {
+      grid-column: 2;
+      grid-row: 2;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(117, 103, 255, 0.06);
+      border-left: 3px solid rgba(117, 103, 255, 0.4);
+    }
+
+    .agents-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--purple);
+      text-transform: uppercase;
+    }
+
+    .agent-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .agent-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(117, 103, 255, 0.3);
+      border-radius: 3px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #d9dcff;
+      background: rgba(117, 103, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .agent-chip:hover {
+      background: rgba(117, 103, 255, 0.15);
+      border-color: rgba(117, 103, 255, 0.6);
+    }
+
+    .agent-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    /* PANEL CORNER MARKS */
+    .corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+    }
+
+    .corner-tl {
+      top: 8px;
+      left: 8px;
+      border-top: 2px solid var(--green);
+      border-left: 2px solid var(--green);
+    }
+
+    .corner-br {
+      bottom: 8px;
+      right: 8px;
+      border-bottom: 2px solid var(--green);
+      border-right: 2px solid var(--green);
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 80px 40px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(66, 245, 158, 0.25), transparent);
+      max-width: 200px;
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -8px;
+      width: 40px;
+      height: 3px;
+      background: var(--red);
+    }
+
+    /* ========== WORK PANELS — MANGA CARD GRID ========== */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-bottom: 60px;
+    }
+
+    .work-card {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .work-card:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+    }
+
+    .work-card:hover .work-overlay {
+      opacity: 1;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 3px,
+        rgba(255, 255, 255, 0.008) 3px,
+        rgba(255, 255, 255, 0.008) 6px
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .work-card-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.08;
+    }
+
+    .work-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(66, 245, 158, 0.08);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border: 2px solid var(--green);
+      box-shadow: inset 0 0 30px rgba(66, 245, 158, 0.1);
+      z-index: 3;
+    }
+
+    .work-card-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      z-index: 2;
+    }
+
+    .work-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .work-title {
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .work-card:nth-child(1) .work-card-bg {
+      background: radial-gradient(circle at 50% 50%, rgba(72, 231, 255, 0.25), transparent 60%);
+    }
+
+    .work-card:nth-child(2) .work-card-bg {
+      background: radial-gradient(circle at 50% 50%, rgba(117, 103, 255, 0.25), transparent 60%);
+    }
+
+    .work-card:nth-child(3) .work-card-bg {
+      background: radial-gradient(circle at 50% 50%, rgba(66, 245, 158, 0.2), transparent 60%);
+    }
+
+    /* ========== IMPACT BAND ========== */
+    .impact-band {
+      position: relative;
+      z-index: 1;
+      padding: 60px 40px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(90deg,
+        rgba(66, 245, 158, 0.02) 0%,
+        rgba(117, 103, 255, 0.02) 50%,
+        rgba(66, 245, 158, 0.02) 100%);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .impact-stat {
+      text-align: center;
+      position: relative;
+    }
+
+    .impact-stat::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+
+    .impact-stat strong {
+      display: block;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .impact-stat span {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    /* ========== ABOUT/SKILLS SECTION ========== */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .skill-card {
+      padding: 20px;
+      border: 1px solid var(--border);
+      background: rgba(66, 245, 158, 0.04);
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover {
+      background: rgba(66, 245, 158, 0.08);
+      border-color: var(--green);
+      transform: translateX(4px);
+    }
+
+    .skill-card strong {
+      color: var(--green);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .skill-card span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ========== CONTACT CTA ========== */
+    .contact-cta {
+      position: relative;
+      z-index: 1;
+      padding: 80px 40px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(66, 245, 158, 0.05) 0%, rgba(117, 103, 255, 0.05) 100%);
+    }
+
+    .contact-cta h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      margin-bottom: 24px;
+    }
+
+    .contact-cta p {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      background: rgba(5, 8, 20, 0.5);
+    }
+
+    footer .brand {
+      font-size: 12px;
+    }
+
+    footer p {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding-top: 64px;
+      }
+
+      .panel-main,
+      .panel-world,
+      .panel-agents {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        min-height: 50vh;
+      }
+
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .impact-band {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+        padding: 4px 0;
+      }
+
+      .panel-main {
+        padding: 32px 24px;
+        min-height: 60vh;
+      }
+
+      .panel-main h1 {
+        font-size: 36px;
+      }
+
+      .panel-main p {
+        font-size: 13px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-card {
+        aspect-ratio: 16 / 9;
+      }
+
+      .impact-band {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 24px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 40px 16px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+        margin-bottom: 32px;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
+
+      .cta-group button {
+        width: 100%;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="speed-lines"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="brand">// KEV.DEV</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#living-world">Living World</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO: MANGA PANEL GRID -->
+  <section class="hero">
+    <div class="panel panel-main">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-br"></div>
+      <div class="eyebrow">Full-Stack · AI Architect · World Builder</div>
+      <h1>Building<em>Systems</em>That Think.</h1>
+      <p>AI agent networks, living 3D worlds, and autonomous pipelines. From manga-shader districts to multi-model orchestration — this is the Round Table.</p>
+      <div class="cta-row">
+        <button class="btn-primary">View the Work</button>
+        <button class="btn-secondary">Meet the Agents</button>
+      </div>
+    </div>
+
+    <div class="panel panel-world" id="living-world">
+      <div class="world-gem">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <polygon points="50,5 90,30 90,70 50,95 10,70 10,30" fill="rgba(72,231,255,0.1)" stroke="#48e7ff" stroke-width="1" filter="url(#glow)"/>
+          <polygon points="50,18 78,35 78,65 50,82 22,65 22,35" fill="rgba(72,231,255,0.15)" stroke="#48e7ff" stroke-width="0.5"/>
+          <polygon points="50,32 65,42 65,58 50,68 35,58 35,42" fill="rgba(72,231,255,0.3)" stroke="#48e7ff" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="6" fill="#48e7ff"/>
+          <line x1="50" y1="5" x2="50" y2="95" stroke="rgba(72,231,255,0.2)" stroke-width="0.5"/>
+          <line x1="10" y1="30" x2="90" y2="70" stroke="rgba(72,231,255,0.2)" stroke-width="0.5"/>
+          <line x1="10" y1="70" x2="90" y2="30" stroke="rgba(72,231,255,0.2)" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="panel-world-label">Living World · Active</div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="panel panel-agents">
+      <div class="corner corner-tl"></div>
+      <div class="agents-label">Round Table · 10 Agents Active</div>
+      <div class="agent-row">
+        <div class="agent-chip"><div class="agent-dot"></div>AXIOM</div>
+        <div class="agent-chip"><div class="agent-dot"></div>FORGE</div>
+        <div class="agent-chip"><div class="agent-dot"></div>VEIN</div>
+        <div class="agent-chip"><div class="agent-dot"></div>LOOM</div>
+        <div class="agent-chip"><div class="agent-dot"></div>SABLE</div>
+        <div class="agent-chip"><div class="agent-dot"></div>PRISM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SECTION -->
+  <section class="section" id="work">
+    <div class="section-eyebrow">Selected Work</div>
+    <h2>The Canon.</h2>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-card-bg"></div>
+        <div class="work-overlay"></div>
+        <div class="work-card-inner">
+          <div class="work-tag">3D World</div>
+          <div class="work-title">OpenClaw Living World</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg"></div>
+        <div class="work-overlay"></div>
+        <div class="work-card-inner">
+          <div class="work-tag">AI Systems</div>
+          <div class="work-title">Round Table Agent Network</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-bg"></div>
+        <div class="work-overlay"></div>
+        <div class="work-card-inner">
+          <div class="work-tag">Manga Pipeline</div>
+          <div class="work-title">Chronicle Comic System</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT BAND -->
+  <div class="impact-band">
+    <div class="impact-stat">
+      <strong>10</strong>
+      <span>Active Agents</span>
+    </div>
+    <div class="impact-stat">
+      <strong>8</strong>
+      <span>Districts Built</span>
+    </div>
+    <div class="impact-stat">
+      <strong>∞</strong>
+      <span>Events Logged</span>
+    </div>
+    <div class="impact-stat">
+      <strong>1</strong>
+      <span>Living World</span>
+    </div>
+  </div>
+
+  <!-- ABOUT & SKILLS SECTION -->
+  <section class="section" id="about">
+    <div class="section-eyebrow">Expertise</div>
+    <h2>Full-Stack Architecture.</h2>
+    <div class="about-section">
+      <div class="about-text">
+        <p>I architect systems at the intersection of AI, graphics, and distributed computing. From orchestrating multi-agent networks to shipping GPU-accelerated 3D worlds, I build stacks that scale.</p>
+        <p>Currently: OpenClaw founder, Living World developer, Round Table orchestrator. Previously: AI systems design, full-stack web, real-time graphics pipelines.</p>
+        <p>Philosophy: Move fast, keep systems composable, obsess over player/user experience. Every pixel and every token choice matters.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <strong>Backend & AI</strong>
+          <span>Python, FastAPI, Agent Orchestration, Multi-model LLMs, API Design</span>
+        </div>
+        <div class="skill-card">
+          <strong>Frontend & Web</strong>
+          <span>TypeScript, Angular, React, Three.js, WebGL, Responsive Design</span>
+        </div>
+        <div class="skill-card">
+          <strong>3D & Graphics</strong>
+          <span>Unreal Engine, NVIDIA CUDA, Shader Programming, Real-time Rendering</span>
+        </div>
+        <div class="skill-card">
+          <strong>Infrastructure</strong>
+          <span>Docker, Kubernetes, Cloud Services, DevOps, System Design</span>
+        </div>
+        <div class="skill-card">
+          <strong>AI & ML Ops</strong>
+          <span>Model Fine-tuning, Inference Optimization, Vector Databases, RAG</span>
+        </div>
+        <div class="skill-card">
+          <strong>Tools & Platforms</strong>
+          <span>Git, PostgreSQL, Redis, AWS, GCP, Blender, Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-cta" id="contact">
+    <h2>Let's Build Together.</h2>
+    <p>Whether you're exploring AI systems, launching a 3D world, or scaling agent infrastructure — let's talk. Open to projects, collaborations, and conversations.</p>
+    <div class="cta-group">
+      <button class="btn-primary">Send an Email</button>
+      <button class="btn-secondary">Check GitHub</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="brand">// KEV.DEV</div>
+    <p>Round Table · OpenClaw · 2026</p>
+  </footer>
+</body>
+</html>

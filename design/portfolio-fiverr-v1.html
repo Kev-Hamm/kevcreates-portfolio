@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kev — Web Apps, AI Tools, Dashboards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Navigation */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            background: rgba(15, 17, 23, 0.95);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f5a623;
+        }
+
+        nav a {
+            color: #c9d1d9;
+            text-decoration: none;
+            margin-left: 32px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #f5a623;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 8vw, 64px);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: clamp(18px, 4vw, 24px);
+            color: #8b949e;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #f5a623;
+            color: #0f1117;
+            text-decoration: none;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #ffc04d;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: #161b22;
+            padding: 32px 0;
+            margin: 60px 0;
+            border-top: 1px solid #30363d;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .trust-items {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-item .rating {
+            font-size: 24px;
+            color: #f5a623;
+            margin-bottom: 4px;
+        }
+
+        .trust-item .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .trust-item .label {
+            font-size: 13px;
+            color: #8b949e;
+            margin-top: 2px;
+        }
+
+        /* Work Samples */
+        .work-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 48px;
+            font-size: 16px;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .work-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover {
+            border-color: #f5a623;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(245, 166, 35, 0.1);
+        }
+
+        .work-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #21262d 0%, #0d1117 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #30363d;
+            font-weight: 600;
+        }
+
+        .work-card-content {
+            padding: 20px;
+        }
+
+        .work-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .work-description {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 12px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            font-size: 12px;
+            padding: 4px 8px;
+            background: #0d1117;
+            color: #f5a623;
+            border-radius: 4px;
+            border: 1px solid #30363d;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: #161b22;
+            margin: 0 -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .pricing-card {
+            background: #0f1117;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: #f5a623;
+            box-shadow: 0 12px 24px rgba(245, 166, 35, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #f5a623;
+            box-shadow: 0 12px 24px rgba(245, 166, 35, 0.15);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        .pricing-tier {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .pricing-amount {
+            font-size: 36px;
+            font-weight: 700;
+            color: #f5a623;
+            margin: 16px 0;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #30363d;
+            font-size: 14px;
+            color: #c9d1d9;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 18px;
+            color: #c9d1d9;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #30363d;
+        }
+
+        .footer-cta h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .footer-cta p {
+            font-size: 16px;
+            color: #8b949e;
+            margin-bottom: 32px;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            padding: 12px 28px;
+            background: transparent;
+            color: #f5a623;
+            border: 2px solid #f5a623;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #f5a623;
+            color: #0f1117;
+        }
+
+        footer {
+            background: #0d1117;
+            padding: 24px 0;
+            text-align: center;
+            color: #8b949e;
+            font-size: 13px;
+            border-top: 1px solid #30363d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .logo {
+                font-size: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .trust-items {
+                gap: 24px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-item .value {
+                font-size: 14px;
+            }
+
+            .footer-cta h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .tagline {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .trust-items {
+                gap: 16px;
+                flex-direction: column;
+            }
+
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Kev</div>
+                <nav>
+                    <a href="#work">Work</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>I build web apps, AI tools, and dashboards that actually ship.</h1>
+                <p class="tagline">Tired of broken promises? I ship production-ready code on time.</p>
+                <a href="#fiverr-profile" class="btn-primary">Hire me on Fiverr</a>
+            </div>
+        </section>
+
+        <!-- Work Samples -->
+        <section class="work-section" id="work">
+            <div class="container">
+                <h2 class="section-title">Recent Work</h2>
+                <p class="section-subtitle">Real projects, real clients, real results</p>
+
+                <div class="work-grid">
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🌐</div>
+                        <div class="work-card-content">
+                            <div class="work-title">SaaS Dashboard</div>
+                            <div class="work-description">Real-time analytics dashboard with user metrics, revenue tracking, and custom reports.</div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🤖</div>
+                        <div class="work-card-content">
+                            <div class="work-title">AI Content Tool</div>
+                            <div class="work-description">AI-powered content generator with batch processing, custom templates, and export options.</div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OpenAI API</span>
+                                <span class="tech-tag">FastAPI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">📱</div>
+                        <div class="work-card-content">
+                            <div class="work-title">Mobile App</div>
+                            <div class="work-description">Cross-platform mobile app with offline sync, push notifications, and real-time updates.</div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">📊</div>
+                        <div class="work-card-content">
+                            <div class="work-title">Data Visualization</div>
+                            <div class="work-description">Interactive charts and maps for business intelligence. Data-driven storytelling at scale.</div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">Plotly</span>
+                                <span class="tech-tag">WebGL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🔌</div>
+                        <div class="work-card-content">
+                            <div class="work-title">API Integration</div>
+                            <div class="work-description">Third-party API integrations, webhooks, and middleware. Connect your tools seamlessly.</div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">REST</span>
+                                <span class="tech-tag">GraphQL</span>
+                                <span class="tech-tag">Webhooks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-card">
+                        <div class="work-thumbnail" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">⚙️</div>
+                        <div class="work-card-content">
+                            <div class="work-title">Automation</div>
+                            <div class="work-description">Business process automation, scheduled tasks, and workflow optimization. Save time, reduce errors.</div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Automation</span>
+                                <span class="tech-tag">Scripting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <h2 class="section-title">Services & Pricing</h2>
+                <p class="section-subtitle">Choose the package that fits your needs</p>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-tier">Basic</div>
+                        <div class="pricing-amount">$150</div>
+                        <div class="pricing-period">Starting price</div>
+                        <ul class="pricing-features">
+                            <li>✓ Single-page feature</li>
+                            <li>✓ 2-3 days turnaround</li>
+                            <li>✓ Basic revisions</li>
+                        </ul>
+                        <button class="btn-primary pricing-cta">Get Started</button>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="pricing-tier">Pro</div>
+                        <div class="pricing-amount">$400</div>
+                        <div class="pricing-period">Most popular</div>
+                        <ul class="pricing-features">
+                            <li>✓ Full app or feature set</li>
+                            <li>✓ 5-7 days turnaround</li>
+                            <li>✓ Unlimited revisions</li>
+                        </ul>
+                        <button class="btn-primary pricing-cta">Get Started</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-tier">Premium</div>
+                        <div class="pricing-amount">$800+</div>
+                        <div class="pricing-period">Custom scope</div>
+                        <ul class="pricing-features">
+                            <li>✓ Complex systems</li>
+                            <li>✓ 2+ week projects</li>
+                            <li>✓ Ongoing support</li>
+                        </ul>
+                        <button class="btn-primary pricing-cta">Let's Talk</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-text">
+                        I'm a full-stack builder obsessed with shipping things that work. I've built everything from real-time dashboards to AI tools to mobile apps. I love working with founders and small businesses who are tired of half-finished projects.
+                    </p>
+                    <p class="about-text">
+                        I code natively with AI. That means I work faster, catch bugs early, and deliver polished products on tight timelines. I'm available now and respond within 2 hours.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2>Ready to build?</h2>
+                <p>Let's talk about your project. I'm here to ship.</p>
+                <div class="footer-buttons">
+                    <a href="#fiverr-profile" class="btn-primary">Hire me on Fiverr</a>
+                    <a href="mailto:kevhamm07@gmail.com" class="btn-secondary">Send me an email</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Kev. Shipping code that works. <a href="https://fiverr.com" style="color: #f5a623; text-decoration: none;">Fiverr Profile</a></p>
+        </div>
+    </footer>
+</body>
+</html>
